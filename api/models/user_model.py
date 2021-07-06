@@ -4,7 +4,7 @@ from .role_model import RoleModel
 
 class UserModel(models.Model):
     status_types = ["Pending", "Active", "Terminated"]
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=24)
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(null=True, blank=True, max_length=255)
     last_name = models.CharField(max_length=255)

@@ -1,2 +1,4 @@
 from .role_serializer import RoleSerializer
 from .user_serializer import UserSerializer
+from .document_category_serializer import DocumentCategorySerializer
+from .document_serializer import DocumentSerializer
