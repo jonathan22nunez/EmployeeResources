@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from datetime import date
 from .user_model import UserModel
 from .document_model import DocumentModel
@@ -20,3 +21,16 @@ class UserDocumentModel(models.Model):
                 return True
         else:
             return False
+
+    @staticmethod
+    def create_from_role(document_id, role):
+        users = UserModel.objects.filter(role__role=role)
+        document = DocumentModel.objects.get(id=document_id)
+        today = date.today()
+        for user in users:
+            UserDocumentModel.objects.create(
+                status='Incomplete',
+                user=user,
+                document=document,
+                created=today.strftime("%Y-%m-%d")
+            )
